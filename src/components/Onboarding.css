@@ -1,0 +1,56 @@
+/* Set up the onboarding page background */
+.onboarding-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../assets/onboarding-bg-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+}
+
+/* Centered content styling */
+.onboarding-content {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6); /* Add a slight transparent overlay for contrast */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading styles */
+.onboarding-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Paragraph styles */
+.onboarding-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Button styles */
+.onboarding-button {
+    background: #28a745;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.onboarding-button:hover {
+    background: #218838;
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+    transform: scale(1.05);
+}

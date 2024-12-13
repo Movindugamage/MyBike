@@ -1,0 +1,29 @@
+.splash-container {
+    text-align: center;
+    background-color: #f0f8ff;
+    padding: 0px;
+}
+
+.splash-bg {
+    width: 100%;
+    height: auto;
+}
+
+.splash-content {
+    margin-top: -1000px;
+}
+
+.splash-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+.splash-buttons button:hover {
+    background-color: #0056b3;
+}
