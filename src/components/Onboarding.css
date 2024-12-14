@@ -1,56 +1,65 @@
-/* Set up the onboarding page background */
+/* src/components/Onboarding.css */
+
 .onboarding-container {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 100vh;
-    background-image: url('../assets/onboarding-bg-1.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #ffffff;
+    background: linear-gradient(to bottom, #6fd8b6, #40a8f5);
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
-/* Centered content styling */
 .onboarding-content {
     text-align: center;
-    background: rgba(0, 0, 0, 0.6); /* Add a slight transparent overlay for contrast */
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+    max-width: 400px;
 }
 
-/* Heading styles */
-.onboarding-content h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
 }
 
-/* Paragraph styles */
-.onboarding-content p {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    font-family: 'Arial', sans-serif;
+p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
 }
 
-/* Button styles */
+.onboarding-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
 .onboarding-button {
-    background: #28a745;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 15px 40px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: background 0.3s ease;
+}
+
+.onboarding-button.back {
+    background-color: #ccc;
+    color: #333;
+}
+
+.onboarding-button.next {
+    background-color: #007bff;
+}
+
+.onboarding-button.skip,
+.onboarding-button.finish {
+    background-color: #28a745;
 }
 
 .onboarding-button:hover {
-    background: #218838;
-    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
-    transform: scale(1.05);
+    opacity: 0.8;
 }

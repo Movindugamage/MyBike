@@ -12,6 +12,8 @@ import Settings from "./components/Settings";
 import UsageHistory from "./components/UsageHistory";
 import Feedback from "./components/Feedback";
 
+import TopUp from "./components/Topup";
+
 
 function App() {
     return (
@@ -31,6 +33,7 @@ function App() {
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/usage-history" element={<UsageHistory />} />
                 <Route path="/feedback" element={<Feedback />} />
+                <Route path="/topup" element={<TopUp />} />
             </Routes>
         </Router>
     );

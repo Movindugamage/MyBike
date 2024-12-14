@@ -1,8 +1,10 @@
 import React from "react";
 import "./ProfilePage.css";
 import bikeImage from "../assets/bike-image.jpg"; // Replace with the appropriate path to your image
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const ProfilePage = () => {
+  const navigate = useNavigate(); // Hook for navigation
   // Sample user data
   const user = {
     name: "John Doe",
@@ -35,7 +37,12 @@ const ProfilePage = () => {
           <h3>Balance</h3>
           <p>${user.balance.toFixed(2)}</p>
         </div>
-        <button className="top-up-button">Top Up</button>
+        <button
+          className="top-up-button"
+          onClick={() => navigate("/topup")} // Navigate to TopUp
+        >
+          Top Up
+        </button>
       </section>
       <section className="usage-section">
         <h3>Usage History</h3>
@@ -54,3 +61,4 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+ 
