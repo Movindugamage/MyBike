@@ -4,6 +4,7 @@ import Onboarding from "./components/Onboarding";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
 
+
 function App() {
     return (
         <Router>
@@ -12,6 +13,8 @@ function App() {
                 <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Registration />} />
+                <Route path="/" element={<Onboarding />} />
+                <Route path="/registration" element={<Registration />} />
             </Routes>
         </Router>
     );
