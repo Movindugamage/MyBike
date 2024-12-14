@@ -28,7 +28,20 @@ const SplashScreen = () => {
                     <button className="signup-btn" onClick={() => navigate("/register")}>
                         Sign Up
                     </button>
+                   
+                    <br /><br /><br />
                 </div>
+                <div className="test-buttons">
+                <button onClick={() => navigate("/scan-bike")}>Scan Bike</button>
+                <button onClick={() => navigate("/find-bicycle")}>Find a Bicycle</button>
+                <button onClick={() => navigate("/find-empty-dock")}>Find Empty Dock</button>
+                <br />
+                <button onClick={() => navigate("/profile")}>My Wallet</button>
+                <button onClick={() => navigate("/settings")}>Settings</button>
+                <button onClick={() => navigate("/usage-history")}>Usage History</button>
+                <button onClick={() => navigate("/feedback")}>Feedback</button>
+           
+            </div>
             </div>
         </div>
     );
