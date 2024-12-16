@@ -1,4 +1,39 @@
-.login-container {
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+  }
+  
+  /* Container Styles */
+  .register-container {
+    background: linear-gradient(135deg, #77e5c4, #68d8ff);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  /* Logo */
+  .logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Header */
+  h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .login-container {
     text-align: center;
     padding: 50px;
 }
