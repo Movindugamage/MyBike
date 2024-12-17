@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
   }
   
   /* Container Styles */
@@ -15,6 +16,7 @@
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    
   }
   
   /* Logo */
@@ -114,6 +116,7 @@
   
   /* Responsive Design */
   @media (max-width: 600px) {
+    
     form {
       padding: 1.5rem;
     }
