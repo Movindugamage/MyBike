@@ -19,7 +19,7 @@ const ProfilePage = () => {
   return (
     <div className="profile-page">
       <header className="profile-header">
-        <button className="back-button">←</button>
+        <button className="back-button" onClick={() => window.history.back()}>←</button>
         <h1>My Wallet</h1>
       </header>
       <section className="profile-card">

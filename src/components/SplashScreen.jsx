@@ -9,6 +9,7 @@ const SplashScreen = () => {
         <div className="splash-container">
             <img src="/src/assets/splash-bg.jpg" alt="Splash Background" className="splash-bg" />
             <div className="splash-content">
+                <img src="/logo.jpeg" alt="My Bike Logo" className="logo" />    
                 <h1>Welcome to My Bike App</h1>
                 <br />
                 <br />
@@ -31,6 +32,11 @@ const SplashScreen = () => {
                    
                     <br /><br /><br />
                 </div>
+
+
+
+Below Buttons are for testing purpose. They will vanish after finalization.
+
                 <div className="test-buttons">
                 <button onClick={() => navigate("/scan-bike")}>Scan Bike</button>
                 <button onClick={() => navigate("/find-bicycle")}>Find a Bicycle</button>

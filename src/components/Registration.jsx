@@ -15,6 +15,8 @@ function Registration() {
     <div className="register-container">
       <img src="/logo.jpeg" alt="My Bike Logo" className="logo" />
       <h1>Welcome New User!</h1>
+      <br />
+
       <form onSubmit={handleRegister}>
         <label>First Name:</label>
         <input type="text" required />
@@ -49,8 +51,11 @@ function Registration() {
         <br />
         <br />
         <br />
+      
+      {/*  
         <label>Credit Card Details:</label>
         <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX" required />
+      */}
         <br />
         <br />
         <br />

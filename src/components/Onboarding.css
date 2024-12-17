@@ -1,65 +1,69 @@
-/* src/components/Onboarding.css */
-
+/* Onboarding.css */
 .onboarding-container {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom, #6fd8b6, #40a8f5);
-    color: white;
-    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #86e1d8, #b0ffc8);
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
 }
 
 .onboarding-content {
-    text-align: center;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: black;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
+    width: 90%;
+    text-align: center;
+    padding: 20px;
 }
 
-h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+.onboarding-image {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 15px;
 }
 
-p {
-    font-size: 1rem;
-    margin-bottom: 2rem;
+.onboarding-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+}
+
+.onboarding-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
 }
 
 .onboarding-buttons {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    align-items: center;
+    gap: 10px;
 }
 
 .onboarding-button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    color: white;
+    flex: 1;
+    padding: 10px 0;
     border: none;
+    background-color: #86e1d8;
+    color: #fff;
     border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.onboarding-button.back {
-    background-color: #ccc;
-    color: #333;
-}
-
-.onboarding-button.next {
-    background-color: #007bff;
-}
-
-.onboarding-button.skip,
-.onboarding-button.finish {
-    background-color: #28a745;
+    transition: background-color 0.3s;
 }
 
 .onboarding-button:hover {
-    opacity: 0.8;
+    background-color: #66c1b0;
+}
+
+.onboarding-button.skip {
+    background-color: transparent;
+    color: #555;
+    text-decoration: underline;
 }

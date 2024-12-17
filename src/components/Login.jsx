@@ -4,7 +4,10 @@ import './Login.css';
 const Login = () => {
   return (
     <div className="login">
+       <img src="/src/assets/splash-bg.jpg" alt="Splash Background" className="splash-bg" />
       <h1>Login</h1>
+      <br/>
+      
       <form>
         <label>
           Username: 

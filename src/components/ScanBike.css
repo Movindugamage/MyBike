@@ -1,0 +1,25 @@
+/* Import Global Styles */
+@import './styles.css';
+
+/* Specific Styling for Scan Bike Page */
+.scan-bike-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.scan-button {
+    background-color: #86e1d8;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.scan-button:hover {
+    background-color: #66c1b0;
+}
