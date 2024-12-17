@@ -5,17 +5,17 @@ const OnboardingPage = ({ step, handleNext, handleBack, handleSkip }) => {
     // Content for each step with images, titles, and descriptions
     const stepContent = {
         1: {
-            image: "/images/locate-bike.png", // Replace with your image path
+            image: "/src/assets/locate.jpg", // Replace with your image path
             title: "Locate",
             description: "Find a nearby bike using the app's map feature.",
         },
         2: {
-            image: "/images/unlock-bike.png", // Replace with your image path
+            image: "/src/assets/unlock.jpg", // Replace with your image path
             title: "Unlock",
             description: "Scan the QR code to unlock the bike and start your ride.",
         },
         3: {
-            image: "/images/ride-bike.png", // Replace with your image path
+            image: "/src/assets/ride.gif", // Replace with your image path
             title: "Ride",
             description: "Enjoy the ride and return the bike to a docking station.",
         },
