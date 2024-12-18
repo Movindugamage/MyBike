@@ -11,12 +11,12 @@ const Login = () => {
       <form>
         <label>
           Username: 
-          <input type="text" name="username" />
+          <input type="text" name="username" required/>
         </label>
         <label>
           <br></br>
           Password: 
-          <input type="password" name="password" />
+          <input type="password" name="password" required/>
         </label>
         <br></br>
         <button type="submit">Login</button>

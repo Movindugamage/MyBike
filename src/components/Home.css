@@ -1,0 +1,53 @@
+/* src/components/Home.css */
+.home-container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.weather-info {
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.home-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.home-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.logout-button {
+    background-color: #dc3545;
+}
+
+.logout-button:hover {
+    background-color: #b52b39;
+}

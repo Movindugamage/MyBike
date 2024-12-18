@@ -1,25 +1,130 @@
-/* Import Global Styles */
-@import './styles.css';
-
-/* Specific Styling for Scan Bike Page */
-.scan-bike-page {
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Container Styles */
+  .scan-container {
+    background: linear-gradient(135deg, #77e5c4, #68d8ff);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-}
-
-.scan-button {
-    background-color: #86e1d8;
-    color: white;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  /* Camera Button */
+  .camera-button {
+    padding: 0.8rem 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, #77e5c4, #68d8ff);
     border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.scan-button:hover {
-    background-color: #66c1b0;
-}
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .camera-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* QR Scanner */
+  .qr-scanner {
+    width: 300px;
+    max-width: 100%;
+    margin: 1rem 0;
+    border: 2px solid #68d8ff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Manual Code Input */
+  .manual-code-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  input.manual-input {
+    width: 250px;
+    padding: 0.75rem;
+    border: 1px solid #4f4c4c;
+    border-radius: 6px;
+    background-color: #e0e0e0;
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input.manual-input:focus {
+    border-color: #68d8ff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(104, 216, 255, 0.5);
+  }
+  
+  input::placeholder {
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+  
+  /* Submit Button */
+  .submit-button {
+    padding: 0.8rem 1.5rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, #68d8ff, #77e5c4);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    .camera-button,
+    .submit-button {
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+    }
+  
+    input.manual-input {
+      width: 200px;
+      font-size: 0.9rem;
+    }
+  }
+  
