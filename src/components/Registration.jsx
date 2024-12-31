@@ -1,34 +1,30 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Registration.css";
 
 function Registration() {
   const navigate = useNavigate();
 
-  // State to store form input data
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     mobileNumber: "",
     nicNo: "",
-    nicFront: null,
-    nicBack: null,
     username: "",
     password: "",
     confirmPassword: "",
   });
 
-  // Handle form input changes
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "file" ? files[0] : value, // For file inputs, store the file
+      [name]: value,
     });
   };
 
-  // Handle form submission
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -37,30 +33,16 @@ function Registration() {
       return;
     }
 
-    // Create form data to send files and other fields
-    const dataToSend = new FormData();
-    dataToSend.append("firstName", formData.firstName);
-    dataToSend.append("lastName", formData.lastName);
-    dataToSend.append("email", formData.email);
-    dataToSend.append("mobileNumber", formData.mobileNumber);
-    dataToSend.append("nicNo", formData.nicNo);
-    dataToSend.append("nicFront", formData.nicFront);
-    dataToSend.append("nicBack", formData.nicBack);
-    dataToSend.append("username", formData.username);
-    dataToSend.append("password", formData.password);
-
     try {
-      const response = await fetch("http://localhost:8080/api/riders", {
-        method: "POST",
-        body: dataToSend, // FormData includes files and text fields
+      const response = await axios.post("http://localhost:8080/api/riders/register", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
-      if (response.ok) {
+      if (response.status === 201) {
         alert("Registration successful!");
-        navigate("/");
-      } else {
-        const errorData = await response.json();
-        alert("Registration failed: " + errorData.message);
+        navigate("/login");
       }
     } catch (error) {
       console.error("Error during registration:", error);
@@ -70,10 +52,7 @@ function Registration() {
 
   return (
     <div className="register-container">
-      <img src="/logo.jpeg" alt="My Bike Logo" className="logo" />
       <h1>Welcome New User!</h1>
-      <br />
-
       <form onSubmit={handleRegister}>
         <label>First Name:</label>
         <input
@@ -120,23 +99,6 @@ function Registration() {
           required
         />
         <br />
-        <label>Upload NIC Front:</label>
-        <input
-          type="file"
-          name="nicFront"
-          accept=".png, .jpeg"
-          onChange={handleChange}
-          required
-        />
-        <label>Upload NIC Back:</label>
-        <input
-          type="file"
-          name="nicBack"
-          accept=".png, .jpeg"
-          onChange={handleChange}
-          required
-        />
-        <br />
         <label>Username:</label>
         <input
           type="text"
@@ -164,10 +126,6 @@ function Registration() {
           required
         />
         <br />
-        <br />
-        <button type="button" onClick={() => navigate("/")}>
-          Back
-        </button>
         <button type="submit">Register</button>
       </form>
     </div>

@@ -1,6 +1,3 @@
-
-
-
 import React, { useState, useEffect } from "react";
 import "./ProfilePage.css";
 import bikeImage from "../assets/bike-image.jpg";
