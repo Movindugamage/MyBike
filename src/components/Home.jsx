@@ -1,36 +1,47 @@
-// src/components/Home.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Home.css"; // Import Home styles
-// import authService from "../services/authService"; // Mock backend service
+import "./Home.css";
 
 const Home = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState({ firstName: "Guest" });
     const [weather, setWeather] = useState({ temp: "--", condition: "Loading..." });
 
-    // Fetch user data and weather info
     useEffect(() => {
         const fetchData = async () => {
             const userData = await authService.getUser();
             setUser(userData);
-
-            // Mock Weather API
-            const weatherData = await fetchWeather();
-            setWeather(weatherData);
+    
+            try {
+                // Make a request to the backend endpoint that calls findWeatherByLocation
+                const weatherData = await fetchWeather();
+                console.log("Fetched Weather Data:", weatherData); // Log the data to inspect it
+                setWeather(weatherData);
+            } catch (error) {
+                console.error("Error fetching weather:", error);
+                setWeather({ temp: "--", condition: "Error fetching weather" });
+            }
         };
-
+    
         fetchData();
     }, []);
-
-    // Mock weather function (replace with real API if needed)
+    
+    // Mock fetchWeather function in case you are directly calling backend
     const fetchWeather = async () => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve({ temp: "28°C", condition: "Sunny" });
-            }, 1000);
-        });
+        try {
+            const response = await fetch("/weather-endpoint");  // Make sure this is correct URL
+            if (!response.ok) {
+                throw new Error("Weather API request failed");
+            }
+            const weatherData = await response.json();
+            return weatherData;  // Assuming the response structure matches the backend model
+        } catch (error) {
+            console.error("Error fetching weather:", error);
+            return { temp: "--", condition: "Error fetching weather" };  // Return error state
+        }
     };
+    
+    
 
     return (
         <div className="home-container">
@@ -46,11 +57,8 @@ const Home = () => {
                 <button onClick={() => navigate("/scan-bike")}>Scan Bike</button>
                 <button onClick={() => navigate("/find-bicycle")}>Find a Bike</button>
                 <button onClick={() => navigate("/usage-history")}>Usage History</button>
-
                 <button onClick={() => navigate("/feedback")}>Feedback</button>
-                <button onClick={() => navigate("/settings")}>Settings</button>
-                
-
+               <button onClick={() => navigate("/settings")}>Settings</button>
                 <button className="logout-button" onClick={() => navigate("/")}>
                     Logout
                 </button>

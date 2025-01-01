@@ -17,6 +17,8 @@ function Registration() {
     confirmPassword: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -29,7 +31,7 @@ function Registration() {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
+      setErrorMessage("Passwords do not match!");
       return;
     }
 
@@ -46,7 +48,7 @@ function Registration() {
       }
     } catch (error) {
       console.error("Error during registration:", error);
-      alert("An error occurred. Please try again later.");
+      setErrorMessage("An error occurred during registration. Please try again later.");
     }
   };
 
@@ -127,6 +129,7 @@ function Registration() {
         />
         <br />
         <button type="submit">Register</button>
+        {errorMessage && <div className="error">{errorMessage}</div>}
       </form>
     </div>
   );

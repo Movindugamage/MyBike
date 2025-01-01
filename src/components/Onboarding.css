@@ -4,15 +4,15 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom, #86e1d8, #b0ffc8);
+    background: url('/src/assets/wlpp3.jpg') no-repeat center center/cover; /* Updated to use the specified background image */
     margin: 0;
     padding: 0;
-    font-family: "Arial", sans-serif;
-    width: 750px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font family */
+    width: 100%; /* Make the container full width */
 }
 
 .onboarding-content {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background for better visibility */
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
@@ -51,7 +51,7 @@
     flex: 1;
     padding: 10px 0;
     border: none;
-    background-color: #86e1d8;
+    background-color: #007bff; /* Consistent button color */
     color: #fff;
     border-radius: 5px;
     font-size: 16px;
@@ -60,11 +60,44 @@
 }
 
 .onboarding-button:hover {
-    background-color: #66c1b0;
+    background-color: #0056b3; /* Consistent hover color */
 }
 
 .onboarding-button.skip {
     background-color: transparent;
     color: #555;
     text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .onboarding-content {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .onboarding-title {
+        font-size: 20px; /* Adjust title size for smaller screens */
+    }
+
+    .onboarding-description {
+        font-size: 14px; /* Adjust description size for smaller screens */
+    }
+
+    .onboarding-button {
+        font-size: 14px; /* Adjust button size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .onboarding-title {
+        font-size: 18px; /* Further adjust title size for mobile */
+    }
+
+    .onboarding-description {
+        font-size: 12px; /* Further adjust description size for mobile */
+    }
+
+    .onboarding-button {
+        font-size: 12px; /* Further adjust button size for mobile */
+    }
 }

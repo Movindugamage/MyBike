@@ -1,43 +1,49 @@
 /* src/components/Home.css */
 .home-container {
-    max-width: 750px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px; /* Increased padding for better spacing on desktops */
     text-align: center;
-    background: rgba(255, 255, 255, 0.9);
+    background: url('/src/assets/wlpp3.jpg') no-repeat center center/cover; /* Full background image */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
+    width: 90%; /* Make the container take up 90% of the screen width on large screens */
+    max-width: 1200px;  /* Restrict the container width on large screens */
+    height: calc(100vh - 100px); /* Full height minus some margin */
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;  /* Larger font size for desktop */
     color: #333;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .weather-info {
     margin: 20px 0;
-    font-size: 1.2rem;
+    font-size: 1.5rem;  /* Larger font size for desktop */
     color: #555;
 }
 
 .home-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-wrap: wrap;  /* Allow buttons to wrap if needed */
+    gap: 20px;  /* Increased gap for better spacing on desktop */
+    justify-content: center;
     margin-top: 30px;
 }
 
 .home-buttons button {
-    background-color: #007bff;
+    background-color: #007bff; /* Consistent button color */
     color: white;
     border: none;
-    padding: 15px 20px;
-    font-size: 1.1rem;
+    padding: 15px 25px;  /* Larger padding for desktop */
+    font-size: 1.2rem;  /* Adjust font size for desktop */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: auto;  /* Let the buttons take natural width on larger screens */
+    min-width: 200px;  /* Set a minimum width for buttons on desktop */
 }
 
 .home-buttons button:hover {
@@ -45,9 +51,69 @@ h1 {
 }
 
 .logout-button {
-    background-color: #dc3545;
+    background-color: #dc3545; /* Consistent logout button color */
 }
 
 .logout-button:hover {
     background-color: #b52b39;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 1024px) {
+    .home-container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .weather-info {
+        font-size: 1.2rem;
+    }
+
+    .home-buttons button {
+        font-size: 1.1rem;
+        padding: 14px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .weather-info {
+        font-size: 1.1rem;
+    }
+
+    .home-buttons button {
+        font-size: 1rem;
+        padding: 12px 15px;
+        width: 100%;  /* Make buttons full-width on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .home-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .weather-info {
+        font-size: 1rem;
+    }
+
+    .home-buttons button {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+        width: 100%;  /* Make buttons full-width on phones */
+    }
 }
