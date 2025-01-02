@@ -6,16 +6,31 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Background Image applied to the entire page */
+body {
+    background-image: url('/src/assets/wlpp3.jpg'); /* Updated to use the specified background image */
+    background-size: cover; /* Ensure the image fills the viewport */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center center; /* Center the image */
+    height: 100vh; /* Ensure it spans the full height of the viewport */
+    display: flex; /* Use flexbox to center the content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
 /* Container Styles */
 .register-container {
-    background: url('/src/assets/wlpp3.jpg') no-repeat center center/cover; /* Updated to use the specified background image */
-    min-height: 100vh;
+    min-height: 80vh; /* Adjust height for scrollable content */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2rem;
     width: 100%; /* Make the container full width */
+    overflow-y: auto; /* Allow scrolling */
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background for better visibility */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
 }
 
 /* Logo */
@@ -35,14 +50,25 @@ h1 {
 
 /* Form Styles */
 form {
-    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background for better visibility */
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
-    width: 90%; /* Make the form responsive */
     display: flex;
     flex-direction: column;
+    width: 100%; /* Full width */
+}
+
+/* Flexbox for side-by-side inputs */
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.input-group input {
+    flex: 1; /* Allow inputs to grow */
+    margin-right: 10px; /* Space between inputs */
+}
+
+.input-group input:last-child {
+    margin-right: 0; /* Remove margin for the last input */
 }
 
 /* Label Styles */
@@ -56,7 +82,6 @@ label {
 /* Input Styles */
 input {
     padding: 0.75rem;
-    margin-bottom: 1rem;
     border: 1px solid #4f4c4c;
     border-radius: 6px;
     background-color: #e0e0e0;
@@ -70,16 +95,27 @@ input:focus {
     box-shadow: 0 0 5px rgba(104, 216, 255, 0.5);
 }
 
-/* File Input Styling */
-input[type="file"] {
-    border: none;
-    background: #a5a5a5;
-    padding: 0.5rem;
+/* Styles for the side-by-side div */
+.side-by-side {
+    display: flex; /* Use flexbox for side-by-side alignment */
+    gap: 1rem; /* Add space between the input groups */
+    margin-bottom: 1rem; /* Add space below the row */
 }
 
-input[type="file"]:hover {
-    background: #eee;
+/* Individual input containers within side-by-side */
+.side-by-side > div {
+    flex: 1; /* Make both child divs grow equally */
+    display: flex;
+    flex-direction: column; /* Align label and input vertically */
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .side-by-side {
+        flex-direction: column; /* Stack inputs vertically on smaller screens */
+    }
+}
+
 
 /* Button Styles */
 button {
@@ -98,15 +134,6 @@ button {
 button:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-button[type="button"] {
-    background: #ccc;
-    color: #333;
-}
-
-button[type="button"]:hover {
-    background: #bbb;
 }
 
 /* Input Placeholder Styling */

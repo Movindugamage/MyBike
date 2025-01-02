@@ -55,82 +55,112 @@ function Registration() {
   return (
     <div className="register-container">
       <h1>Welcome New User!</h1>
-      <form onSubmit={handleRegister}>
-        <label>First Name:</label>
-        <input
-          type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <label>Last Name:</label>
-        <input
-          type="text"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <label>Mobile Number:</label>
-        <input
-          type="tel"
-          name="mobileNumber"
-          value={formData.mobileNumber}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <label>NIC No:</label>
-        <input
-          type="text"
-          name="nicNo"
-          value={formData.nicNo}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <label>Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <label>Re-enter Password:</label>
-        <input
-          type="password"
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <button type="submit">Register</button>
-        {errorMessage && <div className="error">{errorMessage}</div>}
-      </form>
+      <div className="form-container">
+        <form onSubmit={handleRegister}>
+          <div className="side-by-side">
+            <div>
+              <label htmlFor="firstName">First Name:</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="lastName">Last Name:</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            
+          </div>
+          
+
+          <div className="side-by-side">
+            <div>
+              <label htmlFor="mobileNumber">Mobile Number:</label>
+              <input
+                type="tel"
+                id="mobileNumber"
+                name="mobileNumber"
+                value={formData.mobileNumber}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="nicNo">NIC No:</label>
+              <input
+                type="text"
+                id="nicNo"
+                name="nicNo"
+                value={formData.nicNo}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="confirmPassword">Re-enter Password:</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <button type="submit">Register</button>
+          {errorMessage && <div className="error">{errorMessage}</div>}
+        </form>
+      </div>
     </div>
   );
 }

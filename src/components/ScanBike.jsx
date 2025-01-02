@@ -50,8 +50,9 @@ const ScanBike = () => {
   };
 
   return (
+    <div className="scan-container">
     <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>Scan Bike Page</h1>
+      <h1>Scan Bike</h1>
 
       {/* Button to open QR scanner */}
       <button
@@ -95,6 +96,7 @@ const ScanBike = () => {
 
       {/* Display error message */}
       {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+    </div>
     </div>
   );
 };
