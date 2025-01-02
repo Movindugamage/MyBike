@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import profileImage from "../assets/profile-image.jpg"; // Replace with your profile image path
+import profileImage from "../assets/profile-image.jpg";
 
 const Navbar = () => {
   return (

@@ -1,85 +1,113 @@
 .topup-container {
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .topup-header {
-    background: linear-gradient(90deg, #77e5c4, #68d8ff);
-    color: #333;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .topup-header h1 {
-    margin: 0 auto;
-  }
-  
-  .back-button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Updated font for consistency */
+  background: url('/src/assets/wlpp3.jpg') no-repeat center center fixed; /* Updated to use the specified background image */
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.topup-header {
+  background: linear-gradient(90deg, #007bff, #0056b3); /* Consistent header gradient */
+  color: #fff; /* Changed text color for better contrast */
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.topup-header h1 {
+  margin: 0 auto;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff; /* Changed text color for better contrast */
+  cursor: pointer;
+}
+
+.amount-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 2rem 1rem;
+}
+
+.amount-box {
+  background: rgba(255, 255, 255, 0.8); /* Slightly transparent background for better visibility */
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid transparent;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.amount-box.selected {
+  border-color: #00b894;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: #00b894;
+  font-weight: bold;
+}
+
+.payment-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.payment-logo {
+  height: 24px;
+}
+
+.topup-button {
+  margin: auto 1rem 2rem;
+  background: linear-gradient(90deg, #007bff, #0056b3); /* Consistent button gradient */
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .amount-section {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin: 2rem 1rem;
+      grid-template-columns: 1fr; /* Stack amount boxes on smaller screens */
   }
-  
-  .amount-box {
-    background: #fff;
-    border-radius: 8px;
-    padding: 1.5rem;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: 2px solid transparent;
-    position: relative;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .amount-box.selected {
-    border-color: #00b894;
-  }
-  
-  .checkmark {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    color: #00b894;
-    font-weight: bold;
-  }
-  
-  .payment-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 1.5rem;
-    font-size: 1.2rem;
-  }
-  
-  .payment-logo {
-    height: 24px;
-  }
-  
+
   .topup-button {
-    margin: auto 1rem 2rem;
-    background: linear-gradient(90deg, #77e5c4, #68d8ff);
-    border: none;
-    border-radius: 25px;
-    color: white;
-    padding: 1rem;
-    font-size: 1.2rem;
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 1rem; /* Adjust button size for smaller screens */
+      padding: 0.8rem; /* Adjust padding for smaller screens */
   }
-  
+
+  .topup-header h1 {
+      font-size: 1.5rem; /* Adjust header size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .topup-header h1 {
+      font-size: 1.2rem; /* Further adjust header size for mobile */
+  }
+
+  .topup-button {
+      font-size: 0.9rem; /* Further adjust button size for mobile */
+  }
+}

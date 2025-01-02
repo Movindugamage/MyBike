@@ -3,7 +3,6 @@ import SplashScreen from "./components/SplashScreen";
 import Onboarding from "./components/Onboarding";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
-
 import ProfilePage from "./components/ProfilePage";
 import ScanBike from "./components/ScanBike";
 import FindBicycle from "./components/FindBicycle";
@@ -11,8 +10,9 @@ import FindEmptyDock from "./components/FindEmptyDock";
 import Settings from "./components/Settings";
 import UsageHistory from "./components/UsageHistory";
 import Feedback from "./components/Feedback";
-
 import TopUp from "./components/Topup";
+
+import Home from "./components/Home";
 
 
 function App() {
@@ -25,7 +25,6 @@ function App() {
                 <Route path="/register" element={<Registration />} />
                 <Route path="/" element={<Onboarding />} />
                 <Route path="/registration" element={<Registration />} />
-               
                 <Route path="/scan-bike" element={<ScanBike />} />
                 <Route path="/find-bicycle" element={<FindBicycle />} />
                 <Route path="/find-empty-dock" element={<FindEmptyDock />} />
@@ -34,6 +33,9 @@ function App() {
                 <Route path="/usage-history" element={<UsageHistory />} />
                 <Route path="/feedback" element={<Feedback />} />
                 <Route path="/topup" element={<TopUp />} />
+
+                <Route path="/home" element={<Home />} />
+
             </Routes>
         </Router>
     );
