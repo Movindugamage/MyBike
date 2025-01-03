@@ -11,58 +11,86 @@ const Home = () => {
         const fetchData = async () => {
             const userData = await authService.getUser();
             setUser(userData);
-    
+
             try {
-                // Make a request to the backend endpoint that calls findWeatherByLocation
                 const weatherData = await fetchWeather();
-                console.log("Fetched Weather Data:", weatherData); // Log the data to inspect it
                 setWeather(weatherData);
             } catch (error) {
                 console.error("Error fetching weather:", error);
                 setWeather({ temp: "--", condition: "Error fetching weather" });
             }
         };
-    
+
         fetchData();
     }, []);
-    
-    // Mock fetchWeather function in case you are directly calling backend
+
     const fetchWeather = async () => {
         try {
-            const response = await fetch("/weather-endpoint");  // Make sure this is correct URL
+            const response = await fetch("/weather-endpoint");
             if (!response.ok) {
                 throw new Error("Weather API request failed");
             }
-            const weatherData = await response.json();
-            return weatherData;  // Assuming the response structure matches the backend model
+            return await response.json();
         } catch (error) {
             console.error("Error fetching weather:", error);
-            return { temp: "--", condition: "Error fetching weather" };  // Return error state
+            return { temp: "--", condition: "Error fetching weather" };
         }
     };
-    
-    
 
     return (
-        <div className="home-container">
-            <h1>Welcome {user.firstName}</h1>
+        <div className="dashboard-container">
+            <header className="header">
+                <h1>Welcome, {user.firstName}</h1>
+                <div className="weather-info">
+                    <p>Weather: {weather.temp} - {weather.condition}</p>
+                </div>
+            </header>
 
-            <div className="weather-info">
-                <h2>Current Weather</h2>
-                <p>{weather.temp} - {weather.condition}</p>
-            </div>
+            <main className="dashboard">
+                <aside className="sidebar">
+                    <ul>
+                        <li onClick={() => navigate("/Home")}>Home</li>
+                        <li onClick={() => navigate("/profile")}>My Wallet</li>
+                        <li onClick={() => navigate("/scan-bike")}>Scan Bike</li>
+                        <li onClick={() => navigate("/find-bicycle")}>Find a Bike</li>
+                        <li onClick={() => navigate("/usage-history")}>Usage History</li>
+                        <li onClick={() => navigate("/feedback")}>Feedback</li>
+                        <li onClick={() => navigate("/settings")}>Settings</li>
+                        <li className="logout" onClick={() => navigate("/")}>Logout</li>
+                    </ul>
+                </aside>
 
-            <div className="home-buttons">
-                <button onClick={() => navigate("/profile")}>My Wallet</button>
-                <button onClick={() => navigate("/scan-bike")}>Scan Bike</button>
-                <button onClick={() => navigate("/find-bicycle")}>Find a Bike</button>
-                <button onClick={() => navigate("/usage-history")}>Usage History</button>
-                <button onClick={() => navigate("/feedback")}>Feedback</button>
-               <button onClick={() => navigate("/settings")}>Settings</button>
-                <button className="logout-button" onClick={() => navigate("/")}>
-                    Logout
-                </button>
+                <section className="content">
+    
+    {/* Added Weather and Nearest Bike Details */}
+    <div className="info-section">
+        <div className="weather-card">
+            <div className="weather-icon">
+                <img src="/src/assets/weather-icon.png" alt="Weather Icon" /> {/* Replace with your image path */}
             </div>
+            <div className="weather-details">
+                <h3>18°C Cloudy</h3>
+                <p>Marbella Dr</p>
+                <p>28 September, Wednesday</p>
+            </div>
+        </div>
+<br></br>
+        <div className="bike-card">
+            <img src="/src/assets/bike-image.jpg" alt="Bike" className="bike-image" /> {/* Replace with your image path */}
+            <div className="bike-details">
+                <p>Distance: <strong>150m</strong></p>
+                <p>Haibike Sduro FullSeven</p>
+                <p>1 Available</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+            </main>
+
+            <footer className="footer">
+                <p>© 2025 MyBike Bicycle Sharing System. All rights reserved.</p>
+            </footer>
         </div>
     );
 };
