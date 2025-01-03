@@ -59,7 +59,8 @@ const ScanBike = () => {
         onClick={() => setIsCameraOpen(true)}
         style={{ padding: "10px 20px", marginBottom: "20px" }}
       >
-        Open Camera to Scan QR Code
+        Open Camera to <br></br>
+        Scan QR Code
       </button>
 
       {/* QR Scanner */}

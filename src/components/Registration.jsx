@@ -203,6 +203,7 @@ function Registration() {
             {errors.username && <span className="error">{errors.username}</span>}
           </div>
 
+          <div className="side-by-side">
           <div>
             <label htmlFor="password">Password:</label>
             <input
@@ -229,6 +230,7 @@ function Registration() {
             {errors.confirmPassword && (
               <span className="error">{errors.confirmPassword}</span>
             )}
+          </div>
           </div>
 
           <button type="submit">Register</button>

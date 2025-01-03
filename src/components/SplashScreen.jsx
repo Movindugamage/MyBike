@@ -44,13 +44,19 @@ Below Buttons are for testing purpose. They will vanish after finalization.
                 <button onClick={() => navigate("/find-empty-dock")}>Find Empty Dock</button>
                 <br />
                 <button onClick={() => navigate("/profile")}>My Wallet</button>
+              
                 <button onClick={() => navigate("/settings")}>Settings</button>
                 <button onClick={() => navigate("/usage-history")}>Usage History</button>
+              
+              
                 <button onClick={() => navigate("/feedback")}>Feedback</button>
                
                 <button onClick={() => navigate("/home")}>Test Home Page</button>
 
             </div>
+            
+            
+
 
         
             </div>

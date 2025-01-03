@@ -1,9 +1,29 @@
 /* src/components/Home.css */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Background Image applied to the entire page */
+  body {
+    background-image: url('/src/assets/wlpp3.jpg'); /* Updated to use the specified background image */
+    background-size: cover; /* Ensure the image fills the entire viewport */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center center; /* Center the image */
+    height: 100vh; /* Ensure it spans the full height of the viewport */
+    display: flex; /* Use flexbox to center the content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+  }
+
 .home-container {
     margin: 0 auto;
     padding: 40px; /* Increased padding for better spacing on desktops */
     text-align: center;
-    background: url('/src/assets/wlpp3.jpg') no-repeat center center/cover; /* Full background image */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
