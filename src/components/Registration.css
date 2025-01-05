@@ -71,6 +71,12 @@ form {
     margin-right: 0; /* Remove margin for the last input */
 }
 
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+
 /* Label Styles */
 label {
     color: #555;
@@ -84,10 +90,11 @@ input {
     padding: 0.75rem;
     border: 1px solid #4f4c4c;
     border-radius: 6px;
-    background-color: #e0e0e0;
+    background-color: #5353534a;
     font-size: 1rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 input:focus {
     border-color: #68d8ff;

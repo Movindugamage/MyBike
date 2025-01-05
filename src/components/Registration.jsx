@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./Registration.css";
 
 function Registration() {
@@ -17,7 +16,7 @@ function Registration() {
     confirmPassword: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,31 +24,96 @@ function Registration() {
       ...formData,
       [name]: value,
     });
+    validateField(name, value);
   };
 
-  const handleRegister = async (e) => {
+  const validateField = (name, value) => {
+    const newErrors = { ...errors };
+
+    switch (name) {
+      case "firstName":
+      case "lastName":
+        if (!/^[A-Za-z]{2,20}$/.test(value)) {
+          newErrors[name] = "Must be 2-20 letters only.";
+        } else {
+          delete newErrors[name];
+        }
+        break;
+
+      case "email":
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+          newErrors[name] = "Invalid email address.";
+        } else {
+          delete newErrors[name];
+        }
+        break;
+
+      case "mobileNumber":
+        if (!/^\d{10}$/.test(value)) {
+          newErrors[name] = "Must be a 10-digit number.";
+        } else {
+          delete newErrors[name];
+        }
+        break;
+
+      case "nicNo":
+        if (!/^\d+$/.test(value)) {
+          newErrors[name] = "NIC should only contain numbers.";
+        } else {
+          delete newErrors[name];
+        }
+        break;
+
+      case "username":
+        if (!/^[a-zA-Z][a-zA-Z0-9._]{1,19}$/.test(value)) {
+          newErrors[name] =
+            "Username must start with a letter and can contain letters, numbers, dots, or underscores.";
+        } else {
+          delete newErrors[name];
+        }
+        break;
+
+      case "password":
+        if (
+          !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
+            value
+          )
+        ) {
+          newErrors[name] =
+            "Password must have 1 uppercase, 1 lowercase, 1 number, 1 special character, and be at least 8 characters long.";
+        } else {
+          delete newErrors[name];
+        }
+        break;
+
+      case "confirmPassword":
+        if (value !== formData.password) {
+          newErrors[name] = "Passwords do not match.";
+        } else {
+          delete newErrors[name];
+        }
+        break;
+
+      default:
+        break;
+    }
+
+    setErrors(newErrors);
+  };
+
+  const handleRegister = (e) => {
     e.preventDefault();
 
-    if (formData.password !== formData.confirmPassword) {
-      setErrorMessage("Passwords do not match!");
+    // Validate all fields
+    Object.keys(formData).forEach((key) => validateField(key, formData[key]));
+
+    // Check if there are any errors
+    if (Object.keys(errors).length > 0) {
       return;
     }
 
-    try {
-      const response = await axios.post("http://localhost:8080/api/riders/register", formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.status === 201) {
-        alert("Registration successful!");
-        navigate("/login");
-      }
-    } catch (error) {
-      console.error("Error during registration:", error);
-      setErrorMessage("An error occurred during registration. Please try again later.");
-    }
+    console.log("Form submitted successfully!", formData);
+    navigate("/success"); // Redirect or handle success
   };
 
   return (
@@ -68,6 +132,7 @@ function Registration() {
                 onChange={handleChange}
                 required
               />
+              {errors.firstName && <span className="error">{errors.firstName}</span>}
             </div>
             <div>
               <label htmlFor="lastName">Last Name:</label>
@@ -79,6 +144,7 @@ function Registration() {
                 onChange={handleChange}
                 required
               />
+              {errors.lastName && <span className="error">{errors.lastName}</span>}
             </div>
           </div>
 
@@ -92,9 +158,8 @@ function Registration() {
               onChange={handleChange}
               required
             />
-            
+            {errors.email && <span className="error">{errors.email}</span>}
           </div>
-          
 
           <div className="side-by-side">
             <div>
@@ -107,6 +172,9 @@ function Registration() {
                 onChange={handleChange}
                 required
               />
+              {errors.mobileNumber && (
+                <span className="error">{errors.mobileNumber}</span>
+              )}
             </div>
             <div>
               <label htmlFor="nicNo">NIC No:</label>
@@ -118,6 +186,7 @@ function Registration() {
                 onChange={handleChange}
                 required
               />
+              {errors.nicNo && <span className="error">{errors.nicNo}</span>}
             </div>
           </div>
 
@@ -131,8 +200,10 @@ function Registration() {
               onChange={handleChange}
               required
             />
+            {errors.username && <span className="error">{errors.username}</span>}
           </div>
 
+          <div className="side-by-side">
           <div>
             <label htmlFor="password">Password:</label>
             <input
@@ -143,6 +214,7 @@ function Registration() {
               onChange={handleChange}
               required
             />
+            {errors.password && <span className="error">{errors.password}</span>}
           </div>
 
           <div>
@@ -155,10 +227,13 @@ function Registration() {
               onChange={handleChange}
               required
             />
+            {errors.confirmPassword && (
+              <span className="error">{errors.confirmPassword}</span>
+            )}
+          </div>
           </div>
 
           <button type="submit">Register</button>
-          {errorMessage && <div className="error">{errorMessage}</div>}
         </form>
       </div>
     </div>

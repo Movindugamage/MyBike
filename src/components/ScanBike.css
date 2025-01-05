@@ -16,7 +16,7 @@ body {
   display: flex; /* Use flexbox to center the content */
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
-}
+} 
 
 /* Login Container Styles */
 .login-container {
@@ -29,15 +29,7 @@ body {
   max-width: 400px;
 }
 
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Container Styles */
+/* Scan Container Styles */
 .scan-container {
   background: rgba(255, 255, 255, 0.8); 
   padding: 50px;
@@ -142,35 +134,79 @@ input::placeholder {
   font-size: 1rem;
 }
 
+/* Sidebar Styles */
+.sidebar {
+  width: 20%;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 1.2rem;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar li:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.sidebar .logout {
+  color: #dc3545;
+}
+
+/* Dashboard Layout */
+.dashboard {
+  display: flex;
+  flex: 1;
+}
+
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .scan-container {
+    padding: 30px;
+    max-width: 600px;
+  }
+
   h1 {
-      font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .camera-button,
   .submit-button {
-      font-size: 0.9rem;
-      padding: 0.6rem 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
 
   input.manual-input {
-      width: 200px;
-      font-size: 0.9rem;
+    width: 200px;
   }
 }
 
 @media (max-width: 480px) {
+  .scan-container {
+    padding: 20px;
+  }
+
   h1 {
-      font-size: 1.2rem; /* Further adjust header size for mobile */
+    font-size: 1.5rem;
   }
 
   .camera-button,
   .submit-button {
-      font-size: 0.8rem; /* Further adjust button size for mobile */
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
   }
 
   input.manual-input {
-      width: 180px; /* Further adjust input width for mobile */
+    width: 180px;
   }
 }
