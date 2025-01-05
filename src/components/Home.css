@@ -84,11 +84,11 @@ body {
     position: fixed; /* Fix the sidebar to the left */
     top: 0; /* Align to the top */
     left: 0; /* Align to the left */
-    width: 20%; /* Set width */
+    width: 15%; /* Set width */
     height: 100%; /* Full height */
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 15px;
     overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
@@ -163,6 +163,7 @@ body {
     color: white;
     text-align: center;
     font-size: 0.9rem;
+    
 }
 
 
