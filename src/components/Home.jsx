@@ -61,31 +61,29 @@ const Home = () => {
                 </aside>
 
                 <section className="content">
-    
-    {/* Added Weather and Nearest Bike Details */}
-    <div className="info-section">
-        <div className="weather-card">
-            <div className="weather-icon">
-                <img src="/src/assets/weather-icon.png" alt="Weather Icon" /> {/* Replace with your image path */}
-            </div>
-            <div className="weather-details">
-                <h3>18°C Cloudy</h3>
-                <p>Marbella Dr</p>
-                <p>28 September, Wednesday</p>
-            </div>
-        </div>
-<br></br>
-        <div className="bike-card">
-            <img src="/src/assets/bike-image.jpg" alt="Bike" className="bike-image" /> {/* Replace with your image path */}
-            <div className="bike-details">
-                <p>Distance: <strong>150m</strong></p>
-                <p>Haibike Sduro FullSeven</p>
-                <p>1 Available</p>
-            </div>
-        </div>
-    </div>
-</section>
-
+                    {/* Added Weather and Nearest Bike Details */}
+                    <div className="info-section">
+                        <div className="weather-card">
+                            <div className="weather-icon">
+                                <img src="/src/assets/weather-icon.png" alt="Weather Icon" /> {/* Replace with your image path */}
+                            </div>
+                            <div className="weather-details">
+                                <h3>18°C Cloudy</h3>
+                                <p>Marbella Dr</p>
+                                <p>28 September, Wednesday</p>
+                            </div>
+                        </div>
+                        <br />
+                        <div className="bike-card">
+                            <img src="/src/assets/bike-image.jpg" alt="Bike" className="bike-image" /> {/* Replace with your image path */}
+                            <div className="bike-details">
+                                <p>Distance: <strong>150m</strong></p>
+                                <p>Haibike Sduro FullSeven</p>
+                                <p>1 Available</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
 
             <footer className="footer">
