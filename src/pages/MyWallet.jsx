@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./ProfilePage.css";
+import "../styles/MyWallet.css";
 import bikeImage from "../assets/bike-image.jpg";
 import { useNavigate } from "react-router-dom";
+import Layout from "../components/Layout"; // Import Layout component
 
-const ProfilePage = () => {
+const MyWallet = () => {
   const navigate = useNavigate(); // Hook for navigation
 
   // State to store user data
@@ -90,4 +91,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default MyWallet;

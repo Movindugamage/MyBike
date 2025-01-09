@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ProfilePage from "./ProfilePage";
+import MyWallet from "../pages/MyWallet";
 
 test("renders user's balance", () => {
 

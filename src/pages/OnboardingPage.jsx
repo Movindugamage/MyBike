@@ -1,5 +1,6 @@
 import React from "react";
-import "./Onboarding.css";
+import "../styles/Onboarding.css";
+import Layout from "../components/Layout";
 
 const OnboardingPage = ({ step, handleNext, handleBack, handleSkip }) => {
     

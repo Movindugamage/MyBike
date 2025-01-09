@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Layout from "../components/Layout"; // Import Layout component
 
 
 const FindBicycle = ({ user, weather }) => {

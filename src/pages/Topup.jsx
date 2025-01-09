@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./Topup.css"; // Assuming there's a specific CSS for Topup
+import "../styles/Topup.css"; // Correct path to Topup.css
 
 const Topup = () => {
     const navigate = useNavigate();

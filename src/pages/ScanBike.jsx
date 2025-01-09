@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./ScanBike.css";
+import "../styles/ScanBike.css";
 
 const ScanBike = ({ user, weather }) => { // Expecting `user` and `weather` as props
   const navigate = useNavigate(); // Initialize useNavigate

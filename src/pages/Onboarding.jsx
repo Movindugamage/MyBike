@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingPage from "./OnboardingPage";
-import "./Onboarding.css";
+import "../styles/Onboarding.css";
 
 const Onboarding = () => {
     const [step, setStep] = useState(1); // Tracks the current step
