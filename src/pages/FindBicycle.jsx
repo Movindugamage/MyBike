@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
+// import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'; // Import Google Maps components
+import '../styles/FindBicycle.css'; // Ensure the CSS file path is correct
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Layout from "../components/Layout"; // Import Layout component
+import Layout from "../components/Layout.jsx"; // Import Layout component
 
 
 const FindBicycle = ({ user, weather }) => {
@@ -30,7 +32,7 @@ const FindBicycle = ({ user, weather }) => {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
             />
-            <button onClick={handleSearch}>Search</button>
+<button onClick={handleSearch}>Find a Bicycle</button>
 
             {location && (
                 <div>

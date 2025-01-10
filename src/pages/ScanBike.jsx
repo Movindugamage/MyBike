@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import Layout from "../components/Layout"; // Import Layout component
 import "../styles/ScanBike.css";
 
 const ScanBike = ({ user, weather }) => { // Expecting `user` and `weather` as props
@@ -50,87 +51,60 @@ const ScanBike = ({ user, weather }) => { // Expecting `user` and `weather` as p
     }
   };
 
-  return (
-    <div className="dashboard-container">
-      <header className="header">
-        <h1>Welcome, {user?.firstName || "Guest"}</h1>
-        <div className="weather-info">
-          <p>Weather: {weather?.temp || "--"} - {weather?.condition || "N/A"}</p>
-        </div>
-      </header>
+return (
+    <Layout user={user} weather={weather}> {/* Wrap content in Layout */}
+      <div className="scan-container">
+        <div className="scan-bike-content">
+          <h2>Scan Bike</h2>
+          <div style={{ textAlign: "center", padding: "20px" }}>
+            <h1>Please scan the QR code at the dock</h1>
 
-      <main className="dashboard">
-        <aside className="sidebar">
-          <ul>                        
-            <li onClick={() => navigate("/Home")}>Home</li>
-            <li onClick={() => navigate("/profile")}>My Wallet</li>
-            <li onClick={() => navigate("/scan-bike")}>Scan Bike</li>
-            <li onClick={() => navigate("/find-bicycle")}>Find a Bike</li>
-            <li onClick={() => navigate("/usage-history")}>Usage History</li>
-            <li onClick={() => navigate("/feedback")}>Feedback</li>
-            <li onClick={() => navigate("/settings")}>Settings</li>
-            <li className="logout" onClick={() => navigate("/")}>Logout</li>
-          </ul>
-        </aside>
+            {/* Button to open QR scanner */}
+            <button
+              onClick={() => setIsCameraOpen(true)}
+              style={{ padding: "10px 20px", marginBottom: "20px" }}
+            >
+              Open Camera to <br /> Scan QR Code
+            </button>
 
-        <section className="content">
-          <div className="scan-container">
-            <div className="scan-bike-content">
-                <h2>Scan Bike</h2>
-                <div style={{ textAlign: "center", padding: "20px" }}>
-                    <h1>Please scan the QR code at the dock</h1>
+            {/* QR Scanner */}
+            {isCameraOpen && (
+              <div style={{ margin: "20px auto", maxWidth: "300px" }}>
+                <QrReader
+                  delay={300}
+                  onResult={(result, error) => {
+                    if (!!result) handleScan(result.text);
+                    if (!!error) console.log(error);
+                  }}
+                  style={{ width: "100%" }}
+                />
+              </div>
+            )}
 
-                    {/* Button to open QR scanner */}
-                    <button
-                        onClick={() => setIsCameraOpen(true)}
-                        style={{ padding: "10px 20px", marginBottom: "20px" }}
-                    >
-                        Open Camera to <br /> Scan QR Code
-                    </button>
+            {/* Show scanned QR code data */}
+            {qrData && <p>Scanned QR Code: {qrData}</p>}
 
-                    {/* QR Scanner */}
-                    {isCameraOpen && (
-                        <div style={{ margin: "20px auto", maxWidth: "300px" }}>
-                            <QrReader
-                                delay={300}
-                                onResult={(result, error) => {
-                                    if (!!result) handleScan(result.text);
-                                    if (!!error) console.log(error);
-                                }}
-                                style={{ width: "100%" }}
-                            />
-                        </div>
-                    )}
-
-                    {/* Show scanned QR code data */}
-                    {qrData && <p>Scanned QR Code: {qrData}</p>}
-
-                    {/* Text input for manual 4-digit code */}
-                    <div style={{ marginTop: "20px" }}>
-                        <input
-                            type="text"
-                            placeholder="Enter 4-digit code"
-                            value={manualCode}
-                            maxLength={4}
-                            onChange={(e) => setManualCode(e.target.value)}
-                            style={{ padding: "10px", marginRight: "10px", textAlign: "center" }}
-                        />
-                        <button onClick={handleSubmit} style={{ padding: "10px 20px" }}>
-                            Submit
-                        </button>
-                    </div>
-
-                    {/* Display error message */}
-                    {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
-                </div>
+            {/* Text input for manual 4-digit code */}
+            <div style={{ marginTop: "20px" }}>
+              <input
+                type="text"
+                placeholder="Enter 4-digit code"
+                value={manualCode}
+                maxLength={4}
+                onChange={(e) => setManualCode(e.target.value)}
+                style={{ padding: "10px", marginRight: "10px", textAlign: "center" }}
+              />
+              <button onClick={handleSubmit} style={{ padding: "10px 20px" }}>
+                Submit
+              </button>
             </div>
+
+            {/* Display error message */}
+            {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
           </div>
-        </section>
-      </main>
-      <footer className="footer">
-        <p>© 2025 MyBike Bicycle Sharing System. All rights reserved.</p>
-      </footer>
-    </div>
+        </div>
+      </div>
+    </Layout>
   );
 };
 

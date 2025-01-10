@@ -36,58 +36,68 @@ const MyWallet = () => {
   }, []);
 
   return (
-    <div className="profile-page">
-      <header className="profile-header">
-        <button className="back-button" onClick={() => window.history.back()}>
-          ←
-        </button>
-        <h1>My Wallet</h1>
-      </header>
-      <section className="balance-section">
-        <div className="balance-info">
-          <h3>Balance</h3>
-          <p>${user.balance.toFixed(2)}</p>
-        </div>
-        <button
-          className="top-up-button"
-          onClick={() => navigate("/topup")} // Navigate to TopUp
-        >
-          Top Up
-        </button>
-      </section>
-      <section className="profile-card">
-        <div className="card-image">
-          <img src={bikeImage} alt="Bike" />
-        </div>
-        <div className="card-content">
-          <h2>Weekly Pass</h2>
-          <p className="price">${user.weeklyPassPrice.toFixed(2)}</p>
-          <button className="purchase-button">Purchase</button>
-        </div>
-      </section>
-      
-      <section className="usage-section">
-        <h3>Usage History</h3>
-        <ul>
-          {user.usage.length > 0 ? (
-            user.usage.map((entry, index) => (
-              <li key={index}>
-                <span>{entry.date}</span>
-                <span>{entry.distance}</span>
-                <span>{entry.duration}</span>
-              </li>
-            ))
-          ) : (
-            <p>No usage data available.</p>
-          )}
-        </ul>
-      </section>
-      <section className="refresh-section">
-        <button className="refresh-button" onClick={fetchUserData}>
-          Refresh Data
-        </button>
-      </section>
-    </div>
+    <Layout>
+      <div className="profile-page">
+        <header className="profile-header">
+          <button className="back-button" onClick={() => window.history.back()}>
+            ←
+          </button>
+          <h1>My Wallet</h1>
+        </header>
+        <section className="balance-section">
+          <div className="balance-info">
+            <h3>Balance</h3>
+            <p>${user.balance.toFixed(2)}</p>
+          </div>
+          <button
+            className="top-up-button"
+            onClick={() => navigate("/Topup")} // Navigate to TopUp
+          >
+            Top Up
+          </button>
+        </section>
+        <section className="profile-card">
+          <div className="card-image">
+            <img src={bikeImage} alt="Bike" />
+          </div>
+          <div className="card-content">
+            <h2>Weekly Pass</h2>
+            <p className="price">${user.weeklyPassPrice.toFixed(2)}</p>
+            <button className="purchase-button">Purchase</button>
+          </div>
+        </section>
+        
+        <section className="usage-section">
+          <h3>Usage History</h3>
+          <ul>
+            {user.usage.length > 0 ? (
+              user.usage.map((entry, index) => (
+                <li key={index}>
+                  <span>{entry.date}</span>
+                  <span>{entry.distance}</span>
+                  <span>{entry.duration}</span>
+                </li>
+              ))
+            ) : (
+              <p>No usage data available.</p>
+            )}
+          </ul>
+        </section>
+        <section className="refresh-section">
+          <button className="refresh-button" onClick={fetchUserData}>
+            Refresh Data
+          </button>
+        </section>
+        <section className="logout-section">
+          <button
+            className="logout-button"
+            onClick={() => navigate("/")} 
+          >
+            Logout
+          </button>
+        </section>
+      </div>
+    </Layout>
   );
 };
 

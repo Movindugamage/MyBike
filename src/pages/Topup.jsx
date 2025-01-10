@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../styles/Topup.css"; // Correct path to Topup.css
 
 const Topup = () => {
+    const [loading, setLoading] = useState(true); // State to manage loading status
     const navigate = useNavigate();
     const [user, setUser] = useState({ firstName: "Guest" });
     const [weather, setWeather] = useState({ temp: "--", condition: "Loading..." });

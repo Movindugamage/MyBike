@@ -11,8 +11,7 @@ const SplashScreen = () => {
             <div className="splash-content">
                 <img src="/logo.jpeg" alt="My Bike Logo" className="logo" />    
                 <h1>Welcome to My Bike</h1>
-                <br />
-                
+                <br />          
                 <br />
                 <div className="splash-buttons">
                     <button className="get-started-btn" onClick={() => navigate("/onboarding")}>
@@ -34,33 +33,12 @@ const SplashScreen = () => {
                 </div>
                 </div>
 
-
-
 Below Buttons are for testing purpose. They will vanish after finalization.
 
                 <div className="test-buttons">
-                <button onClick={() => navigate("/scan-bike")}>Scan Bike</button>
-                <button onClick={() => navigate("/find-bicycle")}>Find a Bicycle</button>
-                <button onClick={() => navigate("/find-empty-dock")}>Find Empty Dock</button>
-                <br />
-                <button onClick={() => navigate("/profile")}>My Wallet</button>
-              
-                <button onClick={() => navigate("/settings")}>Settings</button>
-                <button onClick={() => navigate("/usage-history")}>Usage History</button>
-              
-              
-                <button onClick={() => navigate("/feedback")}>Feedback</button>
-               
                 <button onClick={() => navigate("/home")}>Test Home Page</button>
-
+            </div> 
             </div>
-            
-            
-
-
-        
-            </div>
-        
     );
 };
 

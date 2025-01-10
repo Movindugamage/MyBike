@@ -1,11 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./Layout.css";
 
 const Layout = ({ children }) => {
+    const navigate = useNavigate(); // Initialize useNavigate
+
     const handleLogout = () => {
-        // Placeholder for logout logic
         console.log("User logged out");
+        navigate("/"); // Navigate to the home page
     };
     return (
         <div className="dashboard-container">
@@ -20,12 +23,10 @@ const Layout = ({ children }) => {
                 <aside className="sidebar">
                     <ul>
                         <li><Link to="/Home">Home</Link></li>
-                        <li><Link to="/my-wallet">My Wallet</Link></li>
+                        <li><Link to="/profile">My Wallet</Link></li>
                         <li><Link to="/scan-bike">Scan Bike</Link></li>
-                        <li><Link to="/find-bicycle">Find a Bike</Link></li>
-                        <li><Link to="/usage-history">Usage History</Link></li>
+                        <li><Link to="/FindBicycle">Find a Bike</Link></li>
                         <li><Link to="/feedback">Feedback</Link></li>
-                        <li><Link to="/settings">Settings</Link></li>
                         <li className="logout" onClick={handleLogout}>Logout</li>
                     </ul>
                 </aside>
