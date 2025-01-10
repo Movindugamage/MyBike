@@ -1,3 +1,5 @@
+// This has errors. fix this
+
 import React, { useState } from "react"; 
 // import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'; // Import Google Maps components
 import '../styles/FindBicycle.css'; // Ensure the CSS file path is correct
