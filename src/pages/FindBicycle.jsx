@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import MapComponent from "../components/MapComponent.jsx";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-// import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'; // Import Google Maps components
+
 import "../styles/FindBicycle.css"; // Ensure the CSS file path is correct
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -49,19 +48,23 @@ function FindBicycle() {
   }, []);
 
   return (
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <h2>Find A Location</h2>
-      <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
-        <MapComponent />
+    <Layout>
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <h2>Find A Location</h2>
+        <div
+          style={{ height: "100%", display: "flex", flexDirection: "column" }}
+        >
+          <MapComponent />
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }
 
