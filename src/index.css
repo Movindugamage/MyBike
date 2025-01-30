@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #155724; /* Changed to dark green */
+  background-color: #d4edda; /* Changed to light green */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,11 +31,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #155724; /* Changed to dark green */
   text-decoration: none; /* Changed for clarity */
 }
 a:hover {
-  color: #535bf2;
+  color: #28a745; /* Changed to a lighter green */
 }
 
 body {
@@ -47,8 +47,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   padding: var(--spacing-medium); /* Add padding for better spacing */
-  background: url('/src/assets/wlpp3.jpg') no-repeat center center fixed; /* Full-screen background image */
-  background-size: cover; /* Ensure the background covers the entire area */
+  background: #d4edda; /* Changed to light green */
 }
 
 h1 {
