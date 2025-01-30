@@ -78,6 +78,7 @@ const Feedback = () => {
         <textarea
           className="feedback-textarea"
           placeholder="Enter your feedback here"
+          style={{ height: "200px" }}
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
         />
@@ -97,7 +98,9 @@ const Feedback = () => {
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" style={{ color: "blue" }}>
+          Submit
+        </button>
         <button type="button" onClick={handleClear}>
           Clear
         </button>
