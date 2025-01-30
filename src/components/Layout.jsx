@@ -1,9 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import "./Layout.css";
 
 const Layout = ({ children }) => {
+<<<<<<< HEAD
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleLogout = () => {
@@ -16,11 +16,43 @@ const Layout = ({ children }) => {
         <h1>Welcome, User</h1>
         <div className="weather-info">
           <p>Weather: --</p>
+=======
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLogout = () => {
+    console.log("User logged out");
+    navigate("/");
+  };
+
+  const navigationItems = [
+    { path: "/home", label: "Home" },
+    { path: "/profile", label: "My Wallet" },
+    { path: "/scan-bike", label: "Scan Bike" },
+    { path: "/find-bicycle", label: "Find a Bike" },
+    { path: "/feedback", label: "Feedback" },
+  ];
+
+  return (
+    <div className="dashboard-container">
+      <header className="header">
+        <div className="header-content">
+          <h1>MyBike Share</h1>
+          <div className="header-right">
+            <div className="weather-info">
+              <p>Weather: 22°C Sunny</p>
+            </div>
+            <div className="user-info">
+              <span>Welcome, User</span>
+            </div>
+          </div>
+>>>>>>> d29dfafcaef9799d3710a35cc7d0fa5266d220bd
         </div>
       </header>
 
       <main className="dashboard">
         <aside className="sidebar">
+<<<<<<< HEAD
           <ul>
             <li>
               <Link to="/Home">Home</Link>
@@ -41,6 +73,25 @@ const Layout = ({ children }) => {
               Logout
             </li>
           </ul>
+=======
+          <nav>
+            <ul>
+              {navigationItems.map((item) => (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className={location.pathname === item.path ? "active" : ""}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <button className="logout" onClick={handleLogout}>
+            Logout
+          </button>
+>>>>>>> d29dfafcaef9799d3710a35cc7d0fa5266d220bd
         </aside>
 
         <section className="content">{children}</section>
