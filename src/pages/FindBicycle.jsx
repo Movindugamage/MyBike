@@ -57,7 +57,7 @@ function FindBicycle() {
           flexDirection: "column",
         }}
       >
-        <h2>Find A Location</h2>
+        <h2>Find A Bike</h2>
         <div
           style={{ height: "100%", display: "flex", flexDirection: "column" }}
         >

@@ -1,32 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../styles/Registration.css";
-import Layout from "../components/Layout";
 
 function Registration() {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     mobileNumber: "",
     nicNo: "",
-    username: "",
+    ridername: "", // Changed from Ridername to ridername
     password: "",
     confirmPassword: "",
+    roles: ["RIDER"], // Added roles field
   });
 
   const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    validateField(name, value);
-  };
 
   const validateField = (name, value) => {
     const newErrors = { ...errors };
@@ -65,10 +56,10 @@ function Registration() {
         }
         break;
 
-      case "username":
+      case "ridername":
         if (!/^[a-zA-Z][a-zA-Z0-9._]{1,19}$/.test(value)) {
           newErrors[name] =
-            "Username must start with a letter and can contain letters, numbers, dots, or underscores.";
+            "Ridername must start with a letter and can contain letters, numbers, dots, or underscores.";
         } else {
           delete newErrors[name];
         }
@@ -102,26 +93,37 @@ function Registration() {
     setErrors(newErrors);
   };
 
-  const handleRegister = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    validateField(name, value);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate all fields
-    Object.keys(formData).forEach((key) => validateField(key, formData[key]));
-
-    // Check if there are any errors
     if (Object.keys(errors).length > 0) {
+      alert("Please fix the errors before submitting.");
       return;
     }
 
-    console.log("Form submitted successfully!", formData);
-    navigate("/success"); // Redirect or handle success
+    try {
+      const response = await axios.post("/auth/register", formData); // Updated endpoint
+      if (response.status === 200) {
+        alert("Registration Successful. Please verify your email.");
+        navigate("/otp-verification"); // Redirect to OTP verification page
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again later");
+      console.error("Error during registration:", error);
+    }
   };
-
+  
   return (
     <div className="register-container">
       <h1>Welcome New User!</h1>
       <div className="form-container">
-        <form onSubmit={handleRegister}>
+        <form onSubmit={handleSubmit}>
           <div className="side-by-side">
             <div>
               <label htmlFor="firstName">First Name:</label>
@@ -192,16 +194,16 @@ function Registration() {
           </div>
 
           <div>
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="ridername">Ridername:</label>
             <input
               type="text"
-              id="username"
-              name="username"
-              value={formData.username}
+              id="ridername"
+              name="ridername"
+              value={formData.ridername}
               onChange={handleChange}
               required
             />
-            {errors.username && <span className="error">{errors.username}</span>}
+            {errors.ridername && <span className="error">{errors.ridername}</span>}
           </div>
 
           <div className="side-by-side">
