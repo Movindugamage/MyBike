@@ -13,17 +13,17 @@ import UsageHistory from "./pages/UsageHistory";
 import Feedback from "./pages/Feedback";
 import TopUp from "./pages/Topup";
 import Home from "./pages/Home";
-
+import OTPVerification from "./pages/OTPVerification"; // Import OTPVerification
 
 function App() {
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<SplashScreen />} />
-                <Route path="/onboarding" element={<Onboarding />} /> // Removed duplicate route
+                <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Registration />} />
-                <Route path="/registration" element={<Registration />} /> 
+                <Route path="/registration" element={<Registration />} />
                 <Route path="/scan-bike" element={<ScanBike />} />
                 <Route path="/find-bicycle" element={<FindBicycle />} />
                 <Route path="/find-empty-dock" element={<FindEmptyDock />} />
@@ -32,9 +32,8 @@ function App() {
                 <Route path="/usage-history" element={<UsageHistory />} />
                 <Route path="/feedback" element={<Feedback />} />
                 <Route path="/topup" element={<TopUp />} />
-
                 <Route path="/home" element={<Home />} />
-
+                <Route path="/otp-verification" element={<OTPVerification />} /> {/* New route for OTP verification */}
             </Routes>
         </Router>
     );
