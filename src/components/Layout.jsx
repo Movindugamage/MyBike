@@ -3,20 +3,6 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import "./Layout.css";
 
 const Layout = ({ children }) => {
-<<<<<<< HEAD
-  const navigate = useNavigate(); // Initialize useNavigate
-
-  const handleLogout = () => {
-    console.log("User logged out");
-    navigate("/"); // Navigate to the home page
-  };
-  return (
-    <div className="dashboard-container">
-      <header className="header">
-        <h1>Welcome, User</h1>
-        <div className="weather-info">
-          <p>Weather: --</p>
-=======
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -46,34 +32,11 @@ const Layout = ({ children }) => {
               <span>Welcome, User</span>
             </div>
           </div>
->>>>>>> d29dfafcaef9799d3710a35cc7d0fa5266d220bd
         </div>
       </header>
 
       <main className="dashboard">
         <aside className="sidebar">
-<<<<<<< HEAD
-          <ul>
-            <li>
-              <Link to="/Home">Home</Link>
-            </li>
-            <li>
-              <Link to="/profile">My Wallet</Link>
-            </li>
-            <li>
-              <Link to="/scan-bike">Scan Bike</Link>
-            </li>
-            <li>
-              <Link to="/find-bicycle">Find a Bike</Link>
-            </li>
-            <li>
-              <Link to="/feedback">Feedback</Link>
-            </li>
-            <li className="logout" onClick={handleLogout}>
-              Logout
-            </li>
-          </ul>
-=======
           <nav>
             <ul>
               {navigationItems.map((item) => (
@@ -91,7 +54,6 @@ const Layout = ({ children }) => {
           <button className="logout" onClick={handleLogout}>
             Logout
           </button>
->>>>>>> d29dfafcaef9799d3710a35cc7d0fa5266d220bd
         </aside>
 
         <section className="content">{children}</section>
