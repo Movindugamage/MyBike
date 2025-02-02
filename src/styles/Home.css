@@ -29,7 +29,7 @@ body {
     background: linear-gradient(90deg, rgba(0, 123, 255, 0.9), rgba(0, 82, 204, 0.9)); /* Gradient background */
     color: white;
     text-align: center;
-    font-size: 1.8rem; /* Slightly larger text for emphasis */
+    font-size: 2rem; /* Increased font size for better visibility */
     font-weight: bold; /* Bold font for importance */
     text-transform: uppercase; /* Transform text to uppercase for a professional look */
     letter-spacing: 1.5px; /* Add spacing between letters */
@@ -46,7 +46,7 @@ body {
 
 /* Logo inside the header */
 .header .logo {
-    font-size: 2rem; /* Larger size for the logo */
+    font-size: 2.5rem; /* Larger size for the logo */
     font-weight: 900; /* Extra-bold for emphasis */
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a text shadow for contrast */
@@ -61,7 +61,7 @@ body {
 .header nav a {
     text-decoration: none;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1.2rem; /* Increased font size for better visibility */
     padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -80,7 +80,7 @@ body {
 .dashboard {
     display: flex;
     flex: 1;
-    margin-top: 80px; /* Add margin to avoid overlap with header */
+    margin-top: 100px; /* Increased margin to avoid overlap with header */
 }
 
 .sidebar {
@@ -88,7 +88,7 @@ body {
     top: 100px; /* Align to the bottom of the header */
     left: 0; /* Align to the left */
     width: 15%; /* Set width */
-    height: calc(100% - 140px); /* Full height minus header */
+    height: calc(100% - 100px); /* Full height minus header */
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
     padding: 15px;
@@ -166,8 +166,22 @@ body {
     color: white;
     text-align: center;
     font-size: 0.9rem;
-    position: fixed; /* Make the footer fixed */
+    position: relative; /* Change footer to relative */
     bottom: 0; /* Stick it to the bottom of the viewport */
     left: 0; /* Align to the left */
     right: 0; /* Align to the right */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Full width on smaller screens */
+        height: auto; /* Auto height */
+        position: relative; /* Change to relative */
+    }
+
+    .content {
+        min-width: auto; /* Remove min-width restriction */
+        margin: 15px; /* Adjust margin */
+    }
 }
