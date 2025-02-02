@@ -3,10 +3,15 @@ import {
   GoogleMap,
   LoadScript,
   Marker,
+  MarkerF,
   InfoWindow,
   StandaloneSearchBox,
 } from "@react-google-maps/api";
 import axios from "axios";
+import { apiService } from "../services/apiService";
+import { useAuthStore } from "../stores/authStore";
+
+const places1 = ["places"];
 
 const MapComponent = () => {
   const [places, setPlaces] = useState([]);
@@ -16,19 +21,24 @@ const MapComponent = () => {
     lng: 79.8612,
   });
   const searchBoxRef = useRef(null);
+  const { token } = useAuthStore();
 
   const mapStyles = {
     height: "70vh",
     width: "100%",
   };
 
+  console.log({ selectedPlace });
+
   // Fetch places from Spring Boot backend
   useEffect(() => {
     const fetchPlaces = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/api/docking-station/any/all"
-        );
+        const response = await apiService.get("/api/docking-station/any/all", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setPlaces(response.data);
       } catch (error) {
         console.error("Error fetching places:", error);
@@ -59,8 +69,8 @@ const MapComponent = () => {
   return (
     <div className="map-container">
       <LoadScript
-        googleMapsApiKey="AIzaSyAqIJAO1gzb2K8meZ3 - rLo_jQJQTzz9oCQ "
-        libraries={["places"]}
+        googleMapsApiKey="AIzaSyAqIJAO1gzb2K8meZ3 - rLo_jQJQTzz9oCQ"
+        libraries={places1}
       >
         <div style={{ display: "flex", margin: "10px 0" }}>
           <StandaloneSearchBox
@@ -86,20 +96,24 @@ const MapComponent = () => {
           </StandaloneSearchBox>
         </div>
 
-        <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={center}>
+        <GoogleMap
+          mapContainerStyle={mapStyles}
+          zoom={13}
+          center={center}
+        >
           {/* Existing markers for saved places */}
           {places.map((place) => (
-            <Marker
+            <MarkerF
               key={place.id}
               position={{
                 lat: place.latitude,
                 lng: place.longitude,
               }}
               onClick={() => setSelectedPlace(place)}
+            
             />
           ))}
 
-          {/* InfoWindow for selected place */}
           {selectedPlace && (
             <InfoWindow
               position={{
@@ -109,8 +123,7 @@ const MapComponent = () => {
               onCloseClick={() => setSelectedPlace(null)}
             >
               <div>
-                <h3>{selectedPlace.name}</h3>
-                {selectedPlace.address && <p>{selectedPlace.address}</p>}
+                <h3>{selectedPlace.availableBikes}</h3>
               </div>
             </InfoWindow>
           )}

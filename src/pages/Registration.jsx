@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { apiService } from "../services/apiService";
+import { useAuthStore } from "../stores/authStore";
 
 function Registration() {
   const navigate = useNavigate();
@@ -14,6 +16,8 @@ function Registration() {
     confirmPassword: "",
     roles: ["RIDER"],
   });
+
+  console.log({ formData });
 
   const [errors, setErrors] = useState({});
 
@@ -84,33 +88,40 @@ function Registration() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData); // Log form data before submission
+    // console.log("Form Data:", formData); // Log form data before submission
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:8080/auth/register",
+    //     formData
+    //   );
+    //   if (response.status === 200) {
+    //     alert("Registration Successful. Please verify your email.");
+    //     navigate("/otp-verification");
+    //   }
+    // } catch (error) {
+    //   if (error.response) {
+    //     // Request made and server responded with a status code
+    //     // that falls out of the range of 2xx
+    //     console.log(error.response.data);
+    //     console.log(error.response.status);
+    //     console.log(error.response.headers);
+    //     alert(`Registration failed: ${error.response.data.message}`);
+    //   } else if (error.request) {
+    //     // The request was made but no response was received
+    //     console.log(error.request);
+    //     alert("No response from server. Check network or server status.");
+    //   } else {
+    //     // Something happened in setting up the request that triggered an Error
+    //     console.log("Error", error.message);
+    //     alert("Error in request setup: " + error.message);
+    //   }
+    // }
     try {
-      const response = await axios.post(
-        "http://localhost:8080/auth/register",
-        formData
-      );
-      if (response.status === 200) {
-        alert("Registration Successful. Please verify your email.");
-        navigate("/otp-verification");
-      }
+      const res = await apiService.post("/auth/register", formData);
+
+      navigate("/otp-verification");
     } catch (error) {
-      if (error.response) {
-        // Request made and server responded with a status code
-        // that falls out of the range of 2xx
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-        alert(`Registration failed: ${error.response.data.message}`);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.log(error.request);
-        alert("No response from server. Check network or server status.");
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log("Error", error.message);
-        alert("Error in request setup: " + error.message);
-      }
+      console.error("Registration failed:", error);
     }
   };
 

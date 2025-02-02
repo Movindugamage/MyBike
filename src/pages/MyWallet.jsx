@@ -17,17 +17,17 @@ const MyWallet = () => {
 
   // Function to fetch data from backend
   const fetchUserData = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/api/riders"); // Replace with your backend endpoint
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      const data = await response.json();
-      setUser(data); // Update state with fetched data
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      alert("Failed to load user data. Please try again.");
-    }
+    // try {
+    //   const response = await fetch("http://localhost:8080/api/riders"); // Replace with your backend endpoint
+    //   if (!response.ok) {
+    //     throw new Error("Failed to fetch data");
+    //   }
+    //   const data = await response.json();
+    //   setUser(data); // Update state with fetched data
+    // } catch (error) {
+    //   console.error("Error fetching user data:", error);
+    //   alert("Failed to load user data. Please try again.");
+    // }
   };
 
   // Fetch data when the component mounts
@@ -51,7 +51,7 @@ const MyWallet = () => {
           </div>
           <button
             className="top-up-button"
-            onClick={() => navigate("/Topup")} // Navigate to TopUp
+            onClick={() => navigate("/topup")} // Navigate to TopUp
           >
             Top Up
           </button>

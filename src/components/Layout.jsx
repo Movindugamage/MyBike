@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import "./Layout.css";
+import { useAuthStore } from "../stores/authStore";
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const {firstName} = useAuthStore();
 
   const handleLogout = () => {
     console.log("User logged out");
@@ -29,7 +31,7 @@ const Layout = ({ children }) => {
               <p>Weather: 22°C Sunny</p>
             </div>
             <div className="user-info">
-              <span>Welcome, User</span>
+              <span>Welcome {firstName}</span>
             </div>
           </div>
         </div>

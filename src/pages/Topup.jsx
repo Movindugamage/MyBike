@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../styles/Topup.css"; // Correct path to Topup.css
+import Layout from "../components/Layout";
 
 const Topup = () => {
     const [loading, setLoading] = useState(true); // State to manage loading status
