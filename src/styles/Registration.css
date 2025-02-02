@@ -1,175 +1,107 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 /* Background Image applied to the entire page */
 body {
-    background-image: url('/src/assets/wlpp3.jpg'); /* Updated to use the specified background image */
-    background-size: cover; /* Ensure the image fills the viewport */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-position: center center; /* Center the image */
-    height: 100vh; /* Ensure it spans the full height of the viewport */
-    display: flex; /* Use flexbox to center the content */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+  background-image: url("/src/assets/wlpp3.jpg"); /* Updated to use the specified background image */
+  background-size: cover; /* Ensure the image fills the viewport */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-position: center center; /* Center the image */
+  height: 100vh; /* Ensure it spans the full height of the viewport */
+  display: flex; /* Use flexbox to center the content */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
 }
 
 /* Container Styles */
 .register-container {
-    min-height: 80vh; /* Adjust height for scrollable content */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    width: 100%; /* Make the container full width */
-    overflow-y: auto; /* Allow scrolling */
-    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background for better visibility */
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-}
-
-/* Logo */
-.logo {
-    width: 100px;
-    height: auto;
-    margin-bottom: 1.5rem;
-}
-
-/* Header */
-h1 {
-    color: #333;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
+  min-height: 100vh; /* Adjust height for scrollable content */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100vw;
+  overflow-y: auto; /* Allow scrolling */
+  background: linear-gradient(0deg, #00ccff, #00ffcc);
+  border-radius: 12px; /* Rounded corners */
 }
 
 /* Form Styles */
-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%; /* Full width */
+
+.form-container {
+  background: white;
+  position: absolute;
+  top: 90px;
+  border-top-left-radius: 40px;
+  width: 100vw;
+  height: 88.8vh; /* Keep this as is */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Change from center to start for better scroll behavior */
+  align-items: center;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 2rem;
 }
 
-/* Flexbox for side-by-side inputs */
-.input-group {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+.signup-form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.input-group input {
-    flex: 1; /* Allow inputs to grow */
-    margin-right: 10px; /* Space between inputs */
+.signup-form div input {
+  width: 100%; /* Full width for inputs */
+  padding: 5px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width */
+  color: #000000;
+  background-color: white; /* Light grey background color for inputs */
+  border-bottom: 1px solid #b9b9b9;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effects */
 }
 
-.input-group input:last-child {
-    margin-right: 0; /* Remove margin for the last input */
+.signup-form div {
+  width: 100; /* Full width for each input container */
+  margin-bottom: 1rem; /* Space between inputs */
 }
 
-.error {
-    color: red;
-    font-size: 0.9em;
-    margin-top: 5px;
-  }
-
-/* Label Styles */
-label {
-    color: #555;
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-    font-weight: 600;
+.signup-button {
+  margin-top: 30px;
+  width: 100%;
+  background: linear-gradient(0deg, #00ccff, #00ffcc);
+  color: rgb(27, 27, 27);
+  font-size: 1.1rem;
+  font-family: poppins;
+  border: none;
+  padding: 15px 10px;
+  border-radius: 30px;
+  cursor: pointer;
 }
 
-/* Input Styles */
-input {
-    padding: 0.75rem;
-    border: 1px solid #4f4c4c;
-    border-radius: 6px;
-    background-color: #5353534a;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+.signup-button:hover {
+  background: linear-gradient(0deg, #00ffcc, #00ccff);
 }
 
-
-input:focus {
-    border-color: #68d8ff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(104, 216, 255, 0.5);
+.logo-section {
+  margin-top: 20px;
+  width: auto;
+  height: 200px;
 }
 
-/* Styles for the side-by-side div */
-.side-by-side {
-    display: flex; /* Use flexbox for side-by-side alignment */
-    gap: 1rem; /* Add space between the input groups */
-    margin-bottom: 1rem; /* Add space below the row */
+.logo-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Individual input containers within side-by-side */
-.side-by-side > div {
-    flex: 1; /* Make both child divs grow equally */
-    display: flex;
-    flex-direction: column; /* Align label and input vertically */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .side-by-side {
-        flex-direction: column; /* Stack inputs vertically on smaller screens */
-    }
-}
-
-
-/* Button Styles */
-button {
-    padding: 0.8rem 1.5rem;
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(90deg, #007bff, #0056b3); /* Consistent button color */
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Input Placeholder Styling */
-input::placeholder {
-    color: #aaa;
-    font-size: 0.9rem;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    form {
-        padding: 1.5rem;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    button {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.2rem; /* Further adjust header size for mobile */
-    }
-
-    button {
-        font-size: 0.8rem; /* Further adjust button size for mobile */
-    }
+.signup-form div select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #b9b9b9;
+  background-color: white;
+  cursor: pointer;
 }

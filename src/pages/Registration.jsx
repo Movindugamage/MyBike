@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../styles/Registration.css";
 
 function Registration() {
   const navigate = useNavigate();
@@ -10,11 +9,10 @@ function Registration() {
     lastName: "",
     email: "",
     mobileNumber: "",
-    nicNo: "",
-    ridername: "", // Changed from Ridername to ridername
+    ridername: "",
     password: "",
     confirmPassword: "",
-    roles: ["RIDER"], // Added roles field
+    roles: ["RIDER"],
   });
 
   const [errors, setErrors] = useState({});
@@ -26,58 +24,41 @@ function Registration() {
       case "firstName":
       case "lastName":
         if (!/^[A-Za-z]{2,20}$/.test(value)) {
-          newErrors[name] = "Must be 2-20 letters only.";
+          newErrors[name] =
+            "Must be 2-20 characters long and contain only letters.";
         } else {
           delete newErrors[name];
         }
         break;
-
       case "email":
-        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
           newErrors[name] = "Invalid email address.";
         } else {
           delete newErrors[name];
         }
         break;
-
       case "mobileNumber":
-        if (!/^\d{10}$/.test(value)) {
-          newErrors[name] = "Must be a 10-digit number.";
+        if (!/^\+?\d{10,15}$/.test(value)) {
+          newErrors[name] = "Must be a valid phone number.";
         } else {
           delete newErrors[name];
         }
         break;
-
-      case "nicNo":
-        if (!/^\d+$/.test(value)) {
-          newErrors[name] = "NIC should only contain numbers.";
-        } else {
-          delete newErrors[name];
-        }
-        break;
-
       case "ridername":
-        if (!/^[a-zA-Z][a-zA-Z0-9._]{1,19}$/.test(value)) {
+        if (!/^[A-Za-z0-9]{2,20}$/.test(value)) {
           newErrors[name] =
-            "Ridername must start with a letter and can contain letters, numbers, dots, or underscores.";
+            "Must be 2-20 characters long and contain only letters and numbers.";
         } else {
           delete newErrors[name];
         }
         break;
-
       case "password":
-        if (
-          !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
-            value
-          )
-        ) {
-          newErrors[name] =
-            "Password must have 1 uppercase, 1 lowercase, 1 number, 1 special character, and be at least 8 characters long.";
+        if (value.length < 6) {
+          newErrors[name] = "Must be at least 6 characters long.";
         } else {
           delete newErrors[name];
         }
         break;
-
       case "confirmPassword":
         if (value !== formData.password) {
           newErrors[name] = "Passwords do not match.";
@@ -85,7 +66,6 @@ function Registration() {
           delete newErrors[name];
         }
         break;
-
       default:
         break;
     }
@@ -95,148 +75,135 @@ function Registration() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
     validateField(name, value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (Object.keys(errors).length > 0) {
-      alert("Please fix the errors before submitting.");
-      return;
-    }
-
+    console.log("Form Data:", formData); // Log form data before submission
     try {
-      const response = await axios.post("/auth/register", formData); // Updated endpoint
+      const response = await axios.post(
+        "http://localhost:8080/auth/register",
+        formData
+      );
       if (response.status === 200) {
         alert("Registration Successful. Please verify your email.");
-        navigate("/otp-verification"); // Redirect to OTP verification page
+        navigate("/otp-verification");
       }
     } catch (error) {
-      alert("An error occurred. Please try again later");
-      console.error("Error during registration:", error);
+      if (error.response) {
+        // Request made and server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+        alert(`Registration failed: ${error.response.data.message}`);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.log(error.request);
+        alert("No response from server. Check network or server status.");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log("Error", error.message);
+        alert("Error in request setup: " + error.message);
+      }
     }
   };
-  
+
   return (
     <div className="register-container">
-      <h1>Welcome New User!</h1>
       <div className="form-container">
-        <form onSubmit={handleSubmit}>
-          <div className="side-by-side">
-            <div>
-              <label htmlFor="firstName">First Name:</label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                required
-              />
-              {errors.firstName && <span className="error">{errors.firstName}</span>}
-            </div>
-            <div>
-              <label htmlFor="lastName">Last Name:</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                required
-              />
-              {errors.lastName && <span className="error">{errors.lastName}</span>}
-            </div>
-          </div>
-
+        <form className="signup-form" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            {errors.email && <span className="error">{errors.email}</span>}
-          </div>
-
-          <div className="side-by-side">
-            <div>
-              <label htmlFor="mobileNumber">Mobile Number:</label>
-              <input
-                type="tel"
-                id="mobileNumber"
-                name="mobileNumber"
-                value={formData.mobileNumber}
-                onChange={handleChange}
-                required
-              />
-              {errors.mobileNumber && (
-                <span className="error">{errors.mobileNumber}</span>
-              )}
-            </div>
-            <div>
-              <label htmlFor="nicNo">NIC No:</label>
-              <input
-                type="text"
-                id="nicNo"
-                name="nicNo"
-                value={formData.nicNo}
-                onChange={handleChange}
-                required
-              />
-              {errors.nicNo && <span className="error">{errors.nicNo}</span>}
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="ridername">Ridername:</label>
             <input
               type="text"
-              id="ridername"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={handleChange}
+            />
+            {errors.firstName && <span>{errors.firstName}</span>}
+          </div>
+          <div>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+            />
+            {errors.lastName && <span>{errors.lastName}</span>}
+          </div>
+          <div>
+            <input
+              type="text"
               name="ridername"
+              placeholder="Username"
               value={formData.ridername}
               onChange={handleChange}
-              required
             />
-            {errors.ridername && <span className="error">{errors.ridername}</span>}
+            {errors.ridername && <span>{errors.ridername}</span>}
           </div>
-
-          <div className="side-by-side">
           <div>
-            <label htmlFor="password">Password:</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            {errors.email && <span>{errors.email}</span>}
+          </div>
+          <div>
+            <input
+              type="text"
+              name="mobileNumber"
+              placeholder="Mobile Number"
+              value={formData.mobileNumber}
+              onChange={handleChange}
+            />
+            {errors.mobileNumber && <span>{errors.mobileNumber}</span>}
+          </div>
+          <div>
             <input
               type="password"
-              id="password"
               name="password"
+              placeholder="Password"
               value={formData.password}
               onChange={handleChange}
-              required
             />
-            {errors.password && <span className="error">{errors.password}</span>}
+            {errors.password && <span>{errors.password}</span>}
           </div>
-
           <div>
-            <label htmlFor="confirmPassword">Re-enter Password:</label>
             <input
               type="password"
-              id="confirmPassword"
               name="confirmPassword"
+              placeholder="Confirm Password"
               value={formData.confirmPassword}
               onChange={handleChange}
-              required
             />
-            {errors.confirmPassword && (
-              <span className="error">{errors.confirmPassword}</span>
-            )}
+            {errors.confirmPassword && <span>{errors.confirmPassword}</span>}
           </div>
+          <div>
+            <label>Role:</label>
+            <select
+              name="roles"
+              value={formData.roles[0]} // Set the default selected value
+              onChange={(e) =>
+                setFormData({ ...formData, roles: [e.target.value] })
+              }
+            >
+              <option value="RIDER">RIDER</option>
+              <option value="ADMIN">ADMIN</option>
+            </select>
           </div>
-
-          <button type="submit">Register</button>
+          <button type="submit" className="signup-button">
+            Register
+          </button>
         </form>
       </div>
     </div>
