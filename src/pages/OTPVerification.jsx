@@ -1,51 +1,53 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 import "../styles/Registration.css"; // Use the same styling as in the registration page
 
 const OTPVerification = () => {
-    const [otp, setOtp] = useState('');
-    const [error, setError] = useState('');
+  const [otp, setOtp] = useState("");
+  const [error, setError] = useState("");
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('/api/verify-otp', { otp });
-            if (response.status === 200) {
-                // Redirect to login page
-                window.location.href = '/login';
-            }
-        } catch (err) {
-            setError('Invalid OTP. Please try again.');
-            alert(error);
-        }
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:8080/auth/verify", {
+        verificationCode: otp, // Use the correct key for the OTP
+      });
+      if (response.status === 200) {
+        // Redirect to login page
+        alert("Email verified. Please login to continue.");
+        window.location.href = "/login";
+      }
+    } catch (err) {
+      setError("Invalid OTP. Please try again.");
+      alert(error);
+    }
+  };
 
-    const handleClear = () => {
-        setOtp('');
-        setError('');
-    };
+  const handleClear = () => {
+    setOtp("");
+    setError("");
+  };
 
-    return (
-        <div className="otp-verification-container">
-            <h1>OTP Verification</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="otp">Enter OTP:</label>
-                    <input
-                        type="text"
-                        id="otp"
-                        name="otp"
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value)}
-                        required
-                    />
-                </div>
-                {error && <span className="error">{error}</span>}
-                <button type="submit">Submit</button>
-                <button type="button" onClick={handleClear}>Clear</button>
-            </form>
+  return (
+    <div className="otp-verification-container">
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>OTP:</label>
+          <input
+            type="text"
+            value={otp}
+            onChange={(e) => setOtp(e.target.value)}
+            placeholder="Enter OTP"
+          />
         </div>
-    );
+        {error && <span>{error}</span>}
+        <button type="submit">Verify</button>
+        <button type="button" onClick={handleClear}>
+          Clear
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default OTPVerification;

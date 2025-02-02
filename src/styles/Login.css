@@ -1,15 +1,7 @@
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 /* Background Image applied to the entire page */
 body {
-  background-image: url('/src/assets/wlpp3.jpg'); /* Updated to use the specified background image */
-  background-size: cover; /* Ensure the image fills the entire viewport */
+  background-image: url("/src/assets/wlpp3.jpg"); /* Updated to use the specified background image */
+  background-size: cover; /* Ensure the image fills the viewport */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   background-position: center center; /* Center the image */
   height: 100vh; /* Ensure it spans the full height of the viewport */
@@ -18,81 +10,98 @@ body {
   justify-content: center; /* Center horizontally */
 }
 
-/* Login Container Styles */
-.login-container {
-  background: rgba(255, 255, 255, 0.8); 
-  padding: 50px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
+/* Container Styles */
+.register-container {
+  min-height: 100vh; /* Adjust height for scrollable content */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100vw;
+  overflow-y: auto; /* Allow scrolling */
+  background: linear-gradient(0deg, #00ccff, #00ffcc);
+  border-radius: 12px; /* Rounded corners */
 }
 
-/* Logo */
-.logo {
-  width: 100px;
-  height: auto;
-  margin-bottom: 1.5rem;
+/* Form Styles */
+
+.form-container {
+  background: white;
+  position: absolute;
+  top: 90px;
+  border-top-left-radius: 40px;
+  width: 100vw;
+  height: 88.8vh; /* Keep this as is */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Change from center to start for better scroll behavior */
+  align-items: center;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 2rem;
 }
 
-/* Header */
-h1 {
-  color: #333;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
+.signup-form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-/* Form Inputs */
-form input {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  width: 100%;
-  max-width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.signup-form div input {
+  width: 100%; /* Full width for inputs */
+  padding: 5px;
   font-size: 1rem;
-}
-
-/* Form Button */
-form button {
-  padding: 10px 20px;
-  background-color: #007bff; /* Consistent button color */
-  color: white;
   border: none;
+  outline: none;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width */
+  color: #000000;
+  background-color: white; /* Light grey background color for inputs */
+  border-bottom: 1px solid #b9b9b9;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effects */
+}
+
+.signup-form div {
+  width: 100; /* Full width for each input container */
+  margin-bottom: 1rem; /* Space between inputs */
+}
+
+.signup-button {
+  margin-top: 30px;
+  width: 100%;
+  background: linear-gradient(0deg, #00ccff, #00ffcc);
+  color: rgb(27, 27, 27);
+  font-size: 1.1rem;
+  font-family: poppins;
+  border: none;
+  padding: 15px 10px;
+  border-radius: 30px;
   cursor: pointer;
-  border-radius: 5px;
+}
+
+.signup-button:hover {
+  background: linear-gradient(0deg, #00ffcc, #00ccff);
+}
+
+.logo-section {
+  margin-top: 20px;
+  width: auto;
+  height: 200px;
+}
+
+.logo-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signup-form div select {
+  width: 100%;
+  padding: 10px;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-form button:hover {
-  background-color: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .login-container {
-      padding: 30px;
-  }
-
-  form input {
-      width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-container {
-      padding: 20px;
-  }
-
-  h1 {
-      font-size: 1.5rem; /* Adjust header size for smaller screens */
-  }
-
-  form button {
-      font-size: 0.9rem; /* Adjust button size for smaller screens */
-  }
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #b9b9b9;
+  background-color: white;
+  cursor: pointer;
 }

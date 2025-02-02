@@ -1,42 +1,32 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
-import "../styles/Login.css";
 
 const Login = () => {
-  const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await axios.post("http://localhost:8080/api/riders/login", formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const response = await axios.post("http://localhost:8080/auth/login", {
+        ridername: formData.username,
+        password: formData.password,
       });
-
       if (response.status === 200) {
+        const { token } = response.data;
+        localStorage.setItem("token", token); // Store the token in localStorage
         alert("Login successful");
-        // You can save token or user info here and redirect to a dashboard or home page
-        navigate("/home");  // Assuming you're routing to home after login
+        // Redirect to a protected route or dashboard
+        window.location.href = "/home";
       }
     } catch (error) {
       console.error("Login failed", error);
-      alert("Invalid credentials. Please try again.");
+      setError("Invalid credentials. Please try again.");
     }
   };
 
@@ -62,6 +52,7 @@ const Login = () => {
           required
         />
         <br />
+        {error && <span>{error}</span>}
         <button type="submit">Login</button>
       </form>
     </div>
